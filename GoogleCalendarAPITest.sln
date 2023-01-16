@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleCalendarClientLib", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DllTest", "DllTest\DllTest.csproj", "{CCB0B2BA-7C5A-4A52-BD02-8CC5D7C6A0ED}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleCalenderDemoApp", "GoogleCalenderDemoApp\GoogleCalenderDemoApp.csproj", "{83FB4FAD-2856-47B6-87D4-3417758B792D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,18 @@ Global
 		{CCB0B2BA-7C5A-4A52-BD02-8CC5D7C6A0ED}.Release|x64.Build.0 = Release|Any CPU
 		{CCB0B2BA-7C5A-4A52-BD02-8CC5D7C6A0ED}.Release|x86.ActiveCfg = Release|Any CPU
 		{CCB0B2BA-7C5A-4A52-BD02-8CC5D7C6A0ED}.Release|x86.Build.0 = Release|Any CPU
+		{83FB4FAD-2856-47B6-87D4-3417758B792D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83FB4FAD-2856-47B6-87D4-3417758B792D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83FB4FAD-2856-47B6-87D4-3417758B792D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{83FB4FAD-2856-47B6-87D4-3417758B792D}.Debug|x64.Build.0 = Debug|Any CPU
+		{83FB4FAD-2856-47B6-87D4-3417758B792D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{83FB4FAD-2856-47B6-87D4-3417758B792D}.Debug|x86.Build.0 = Debug|Any CPU
+		{83FB4FAD-2856-47B6-87D4-3417758B792D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83FB4FAD-2856-47B6-87D4-3417758B792D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83FB4FAD-2856-47B6-87D4-3417758B792D}.Release|x64.ActiveCfg = Release|Any CPU
+		{83FB4FAD-2856-47B6-87D4-3417758B792D}.Release|x64.Build.0 = Release|Any CPU
+		{83FB4FAD-2856-47B6-87D4-3417758B792D}.Release|x86.ActiveCfg = Release|Any CPU
+		{83FB4FAD-2856-47B6-87D4-3417758B792D}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
