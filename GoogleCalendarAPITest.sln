@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.33026.149
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleCalendarAPITest", "GoogleCalendarAPITest.csproj", "{074AAA5C-A58C-42DB-A50E-383970994C22}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleCalendarClientLib", "GoogleCalandarClientLib\GoogleCalendarClientLib.csproj", "{2EE2469C-6887-4B56-8192-78089D6D65BC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{074AAA5C-A58C-42DB-A50E-383970994C22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{074AAA5C-A58C-42DB-A50E-383970994C22}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{074AAA5C-A58C-42DB-A50E-383970994C22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EE2469C-6887-4B56-8192-78089D6D65BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EE2469C-6887-4B56-8192-78089D6D65BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EE2469C-6887-4B56-8192-78089D6D65BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EE2469C-6887-4B56-8192-78089D6D65BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
