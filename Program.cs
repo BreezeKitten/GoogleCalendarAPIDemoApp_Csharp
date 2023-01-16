@@ -24,11 +24,14 @@ namespace Discovery.ListAPIs
             string[] scopes = new string[3] { "https://www.googleapis.com/auth/calendar",  
                                                 "https://www.googleapis.com/auth/calendar.events",
                                                 "https://www.googleapis.com/auth/calendar.events.readonly" }; // replace n with the number of scopes you need and write them one by one
-            CalendarService service = GetCalendarService(clientSecretJson, userName, scopes);
+            //CalendarService service = GetCalendarService(clientSecretJson, userName, scopes);
+
+            CalendarService service = AuthenticateServiceAccount("calendarapitest@window10-259107.iam.gserviceaccount.com",
+                 "C:\\Users\\BreezeCat\\Downloads\\window10-259107-3a5e3dd1d610.json", scopes);
 
             Event newEvent = new Event()
             {
-                Summary = "API Test Event",
+                Summary = "API Test Event Service Account",
                 Description = "event description",
                 Start = new EventDateTime()
                 {
@@ -88,7 +91,7 @@ namespace Discovery.ListAPIs
                     credPath = Path.Combine(credPath, ".credentials\\", System.Reflection.Assembly.GetExecutingAssembly().GetName().Name);
 
                     // Requesting Authentication or loading previously stored authentication for userName
-                    var credential = GoogleWebAuthorizationBroker.AuthorizeAsync(GoogleClientSecrets.FromStream(stream).Secrets,
+                    var credential = GoogleWebAuthorizationBroker.AuthorizeAsync(GoogleClientSecrets.Load(stream).Secrets,
                                                                              scopes,
                                                                              userName,
                                                                              CancellationToken.None,
@@ -124,5 +127,62 @@ namespace Discovery.ListAPIs
             }
         }
 
+
+        public static CalendarService AuthenticateServiceAccount(string serviceAccountEmail, string serviceAccountCredentialFilePath, string[] scopes)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(serviceAccountCredentialFilePath))
+                    throw new Exception("Path to the service account credentials file is required.");
+                if (!File.Exists(serviceAccountCredentialFilePath))
+                    throw new Exception("The service account credentials file does not exist at: " + serviceAccountCredentialFilePath);
+                if (string.IsNullOrEmpty(serviceAccountEmail))
+                    throw new Exception("ServiceAccountEmail is required.");
+
+                // For Json file
+                if (Path.GetExtension(serviceAccountCredentialFilePath).ToLower() == ".json")
+                {
+                    GoogleCredential credential;
+                    using (var stream = new FileStream(serviceAccountCredentialFilePath, FileMode.Open, FileAccess.Read))
+                    {
+                        credential = GoogleCredential.FromStream(stream)
+                             .CreateScoped(scopes);
+                    }
+
+                    // Create the  Analytics service.
+                    return new CalendarService(new BaseClientService.Initializer()
+                    {
+                        HttpClientInitializer = credential,
+                        ApplicationName = "Calendar Service account Authentication Sample",
+                    });
+                }
+                /*else if (Path.GetExtension(serviceAccountCredentialFilePath).ToLower() == ".p12")
+                {   // If its a P12 file
+
+                    var certificate = new X509Certificate2(serviceAccountCredentialFilePath, "notasecret", X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.Exportable);
+                    var credential = new ServiceAccountCredential(new ServiceAccountCredential.Initializer(serviceAccountEmail)
+                    {
+                        Scopes = scopes
+                    }.FromCertificate(certificate));
+
+                    // Create the  Calendar service.
+                    return new CalendarService(new BaseClientService.Initializer()
+                    {
+                        HttpClientInitializer = credential,
+                        ApplicationName = "Calendar Authentication Sample",
+                    });
+                }*/
+                else
+                {
+                    throw new Exception("Unsupported Service accounts credentials.");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("CreateServiceAccountCalendarFailed", ex);
+            }
+        }
     }
+
 }
