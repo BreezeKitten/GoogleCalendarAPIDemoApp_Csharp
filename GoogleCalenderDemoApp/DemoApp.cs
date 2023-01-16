@@ -100,5 +100,15 @@ namespace GoogleCalenderDemoApp
                 UpdateReadEvent(cb_EventID.Text);
             }
         }
+
+        private void bt_AddEvent_Click(object sender, EventArgs e)
+        {
+            SelfDefineEvent newevent = new SelfDefineEvent();
+            newevent.Summary = tb_EventSummary.Text;
+            newevent.Description = rtb_EventDescription.Text;
+            newevent.Start = dtp_EventStartTime.Value;
+            newevent.End = dtp_EventEndTime.Value;
+            client.CreateEvent(Properties.Settings.Default.TargetCalendarID, newevent);
+        }
     }
 }

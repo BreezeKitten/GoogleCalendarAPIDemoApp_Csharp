@@ -42,6 +42,7 @@
             this.tb_ReadID = new System.Windows.Forms.TextBox();
             this.dtp_EventStartTime = new System.Windows.Forms.DateTimePicker();
             this.dtp_EventEndTime = new System.Windows.Forms.DateTimePicker();
+            this.bt_AddEvent = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -117,6 +118,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.bt_AddEvent);
             this.groupBox1.Controls.Add(this.dtp_EventEndTime);
             this.groupBox1.Controls.Add(this.dtp_EventStartTime);
             this.groupBox1.Controls.Add(this.tb_ReadID);
@@ -170,6 +172,16 @@
             this.dtp_EventEndTime.Size = new System.Drawing.Size(159, 22);
             this.dtp_EventEndTime.TabIndex = 4;
             // 
+            // bt_AddEvent
+            // 
+            this.bt_AddEvent.Location = new System.Drawing.Point(165, 236);
+            this.bt_AddEvent.Name = "bt_AddEvent";
+            this.bt_AddEvent.Size = new System.Drawing.Size(75, 23);
+            this.bt_AddEvent.TabIndex = 5;
+            this.bt_AddEvent.Text = "新增";
+            this.bt_AddEvent.UseVisualStyleBackColor = true;
+            this.bt_AddEvent.Click += new System.EventHandler(this.bt_AddEvent_Click);
+            // 
             // DemoApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -208,6 +220,7 @@
         private System.Windows.Forms.TextBox tb_EventSummary;
         private System.Windows.Forms.DateTimePicker dtp_EventStartTime;
         private System.Windows.Forms.DateTimePicker dtp_EventEndTime;
+        private System.Windows.Forms.Button bt_AddEvent;
     }
 }
 
