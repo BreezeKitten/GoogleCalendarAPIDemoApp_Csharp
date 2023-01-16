@@ -87,7 +87,13 @@ namespace GoogleCalandarClientLib
 
             String calendarId = TargetcalendarID;
             EventsResource.InsertRequest request = MainService.Events.Insert(newEvent, calendarId);
-            Event createdEvent = request.Execute();
+            Event createdEvent = request.Execute();            
+        }
+
+        public void GetList(string TargetcalendarID)
+        {
+            EventsResource.ListRequest request = MainService.Events.List(TargetcalendarID);
+            Events createdEvent = request.Execute();
         }
 
         private bool Initial_WithServiceAccount(string accountmail, string jsonfile)

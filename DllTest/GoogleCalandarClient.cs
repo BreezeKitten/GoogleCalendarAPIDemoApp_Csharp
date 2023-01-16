@@ -87,7 +87,13 @@ namespace GoogleCalandarClientLib
 
             String calendarId = TargetcalendarID;
             EventsResource.InsertRequest request = MainService.Events.Insert(newEvent, calendarId);
-            Event createdEvent = request.Execute();
+            Event createdEvent = request.Execute();            
+        }
+
+        public void GetList(string TargetcalendarID)
+        {
+            EventsResource.ListRequest request = MainService.Events.List(TargetcalendarID);
+            Events createdEvent = request.Execute();
         }
 
         private bool Initial_WithServiceAccount(string accountmail, string jsonfile)
@@ -107,7 +113,16 @@ namespace GoogleCalandarClientLib
 
         private bool Initial_WithUserAccount(string username, string clientSecretJson)
         {
-            return false;
+            try
+            {
+                MainService = GetCalendarService(username, clientSecretJson, m_Scope);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Initial ServiceAccount Ex - " + ex.Message);
+                return false;
+            }
         }
 
         private static CalendarService AuthenticateServiceAccount(string serviceAccountEmail, string serviceAccountCredentialFilePath, string[] scopes)
@@ -163,6 +178,81 @@ namespace GoogleCalandarClientLib
             catch (Exception ex)
             {
                 throw new Exception("CreateServiceAccountCalendarFailed", ex);
+            }
+        }
+
+        private static CalendarService GetCalendarService(string userName, string clientSecretJson, string[] scopes)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(userName))
+                    throw new ArgumentNullException("userName");
+                if (string.IsNullOrEmpty(clientSecretJson))
+                    throw new ArgumentNullException("clientSecretJson");
+                if (!File.Exists(clientSecretJson))
+                    throw new Exception("clientSecretJson file does not exist.");
+
+                var cred = GetUserCredential(clientSecretJson, userName, scopes);
+                return GetService(cred);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Get Calendar service failed.", ex);
+            }
+        }
+
+        private static UserCredential GetUserCredential(string clientSecretJson, string userName, string[] scopes)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(userName))
+                    throw new ArgumentNullException("userName");
+                if (string.IsNullOrEmpty(clientSecretJson))
+                    throw new ArgumentNullException("clientSecretJson");
+                if (!File.Exists(clientSecretJson))
+                    throw new Exception("clientSecretJson file does not exist.");
+
+                // These are the scopes of permissions you need. It is best to request only what you need and not all of them               
+                using (var stream = new FileStream(clientSecretJson, FileMode.Open, FileAccess.Read))
+                {
+                    string credPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
+                    credPath = Path.Combine(credPath, ".credentials\\", System.Reflection.Assembly.GetExecutingAssembly().GetName().Name);
+
+                    // Requesting Authentication or loading previously stored authentication for userName
+                    var credential = GoogleWebAuthorizationBroker.AuthorizeAsync(GoogleClientSecrets.Load(stream).Secrets,
+                                                                             scopes,
+                                                                             userName,
+                                                                             CancellationToken.None,
+                                                                             new FileDataStore(credPath, true)).Result;
+
+                    credential.GetAccessTokenForRequestAsync();
+                    return credential;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Get user credentials failed.", ex);
+            }
+        }
+
+        private static CalendarService GetService(UserCredential credential)
+        {
+            try
+            {
+                if (credential == null)
+                    throw new ArgumentNullException("credential");
+
+                // Create Calendar API service.
+                return new CalendarService(new BaseClientService.Initializer()
+                {
+                    HttpClientInitializer = credential,
+                    ApplicationName = "Calendar Oauth2 Authentication Sample"
+                });
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Get Calendar service failed.", ex);
             }
         }
     }
