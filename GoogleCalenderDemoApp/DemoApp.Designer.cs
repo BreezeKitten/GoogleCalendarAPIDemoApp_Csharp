@@ -32,11 +32,18 @@
             this.lb_InitialStatus = new System.Windows.Forms.Label();
             this.bt_InitalClient = new System.Windows.Forms.Button();
             this.bt_ShowAllEvent = new System.Windows.Forms.Button();
-            this.tb_EventID = new System.Windows.Forms.TextBox();
             this.bt_DelEvent = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsb_Setting = new System.Windows.Forms.ToolStripButton();
+            this.cb_EventID = new System.Windows.Forms.ComboBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tb_EventSummary = new System.Windows.Forms.TextBox();
+            this.rtb_EventDescription = new System.Windows.Forms.RichTextBox();
+            this.tb_ReadID = new System.Windows.Forms.TextBox();
+            this.dtp_EventStartTime = new System.Windows.Forms.DateTimePicker();
+            this.dtp_EventEndTime = new System.Windows.Forms.DateTimePicker();
             this.toolStrip1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lb_InitialStatus
@@ -60,7 +67,7 @@
             // 
             // bt_ShowAllEvent
             // 
-            this.bt_ShowAllEvent.Location = new System.Drawing.Point(183, 86);
+            this.bt_ShowAllEvent.Location = new System.Drawing.Point(183, 58);
             this.bt_ShowAllEvent.Name = "bt_ShowAllEvent";
             this.bt_ShowAllEvent.Size = new System.Drawing.Size(75, 23);
             this.bt_ShowAllEvent.TabIndex = 2;
@@ -68,16 +75,9 @@
             this.bt_ShowAllEvent.UseVisualStyleBackColor = true;
             this.bt_ShowAllEvent.Click += new System.EventHandler(this.bt_ShowAllEvent_Click);
             // 
-            // tb_EventID
-            // 
-            this.tb_EventID.Location = new System.Drawing.Point(12, 57);
-            this.tb_EventID.Name = "tb_EventID";
-            this.tb_EventID.Size = new System.Drawing.Size(165, 22);
-            this.tb_EventID.TabIndex = 3;
-            // 
             // bt_DelEvent
             // 
-            this.bt_DelEvent.Location = new System.Drawing.Point(183, 57);
+            this.bt_DelEvent.Location = new System.Drawing.Point(14, 86);
             this.bt_DelEvent.Name = "bt_DelEvent";
             this.bt_DelEvent.Size = new System.Drawing.Size(75, 23);
             this.bt_DelEvent.TabIndex = 4;
@@ -106,14 +106,79 @@
             this.tsb_Setting.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.tsb_Setting.Click += new System.EventHandler(this.tsb_Setting_Click);
             // 
+            // cb_EventID
+            // 
+            this.cb_EventID.FormattingEnabled = true;
+            this.cb_EventID.Location = new System.Drawing.Point(12, 60);
+            this.cb_EventID.Name = "cb_EventID";
+            this.cb_EventID.Size = new System.Drawing.Size(165, 20);
+            this.cb_EventID.TabIndex = 6;
+            this.cb_EventID.SelectedIndexChanged += new System.EventHandler(this.cb_EventID_SelectedIndexChanged);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.dtp_EventEndTime);
+            this.groupBox1.Controls.Add(this.dtp_EventStartTime);
+            this.groupBox1.Controls.Add(this.tb_ReadID);
+            this.groupBox1.Controls.Add(this.rtb_EventDescription);
+            this.groupBox1.Controls.Add(this.tb_EventSummary);
+            this.groupBox1.Location = new System.Drawing.Point(12, 116);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(246, 322);
+            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "事件內容";
+            // 
+            // tb_EventSummary
+            // 
+            this.tb_EventSummary.Location = new System.Drawing.Point(81, 54);
+            this.tb_EventSummary.Name = "tb_EventSummary";
+            this.tb_EventSummary.Size = new System.Drawing.Size(159, 22);
+            this.tb_EventSummary.TabIndex = 0;
+            // 
+            // rtb_EventDescription
+            // 
+            this.rtb_EventDescription.Location = new System.Drawing.Point(81, 82);
+            this.rtb_EventDescription.Name = "rtb_EventDescription";
+            this.rtb_EventDescription.Size = new System.Drawing.Size(159, 92);
+            this.rtb_EventDescription.TabIndex = 1;
+            this.rtb_EventDescription.Text = "";
+            // 
+            // tb_ReadID
+            // 
+            this.tb_ReadID.Location = new System.Drawing.Point(81, 26);
+            this.tb_ReadID.Name = "tb_ReadID";
+            this.tb_ReadID.ReadOnly = true;
+            this.tb_ReadID.Size = new System.Drawing.Size(159, 22);
+            this.tb_ReadID.TabIndex = 2;
+            // 
+            // dtp_EventStartTime
+            // 
+            this.dtp_EventStartTime.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            this.dtp_EventStartTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp_EventStartTime.Location = new System.Drawing.Point(81, 180);
+            this.dtp_EventStartTime.Name = "dtp_EventStartTime";
+            this.dtp_EventStartTime.Size = new System.Drawing.Size(159, 22);
+            this.dtp_EventStartTime.TabIndex = 3;
+            // 
+            // dtp_EventEndTime
+            // 
+            this.dtp_EventEndTime.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            this.dtp_EventEndTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp_EventEndTime.Location = new System.Drawing.Point(81, 208);
+            this.dtp_EventEndTime.Name = "dtp_EventEndTime";
+            this.dtp_EventEndTime.Size = new System.Drawing.Size(159, 22);
+            this.dtp_EventEndTime.TabIndex = 4;
+            // 
             // DemoApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.cb_EventID);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.bt_DelEvent);
-            this.Controls.Add(this.tb_EventID);
             this.Controls.Add(this.bt_ShowAllEvent);
             this.Controls.Add(this.bt_InitalClient);
             this.Controls.Add(this.lb_InitialStatus);
@@ -121,6 +186,8 @@
             this.Text = "DemoApp";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -131,10 +198,16 @@
         private System.Windows.Forms.Label lb_InitialStatus;
         private System.Windows.Forms.Button bt_InitalClient;
         private System.Windows.Forms.Button bt_ShowAllEvent;
-        private System.Windows.Forms.TextBox tb_EventID;
         private System.Windows.Forms.Button bt_DelEvent;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton tsb_Setting;
+        private System.Windows.Forms.ComboBox cb_EventID;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox tb_ReadID;
+        private System.Windows.Forms.RichTextBox rtb_EventDescription;
+        private System.Windows.Forms.TextBox tb_EventSummary;
+        private System.Windows.Forms.DateTimePicker dtp_EventStartTime;
+        private System.Windows.Forms.DateTimePicker dtp_EventEndTime;
     }
 }
 

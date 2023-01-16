@@ -121,6 +121,31 @@ namespace GoogleCalandarClientLib
             request.Execute();
         }
 
+        public bool GetEvent(string TargetcalendarID, string EventID, out SelfDefineEvent getResult)
+        {
+            getResult = new SelfDefineEvent();
+            if (m_Initialized == false)
+            {
+                Console.WriteLine("Not Initialized");
+                return false;
+            }
+
+            EventsResource.GetRequest request = MainService.Events.Get(TargetcalendarID, EventID);
+            Event getevent = request.Execute();
+            try
+            {
+                getResult.Summary = getevent.Summary;
+                getResult.Description = getevent.Description;
+                //getResult.Start = getevent.Start.DateTime.Value;
+                //getResult.End = getevent.End.DateTime.Value;
+                return true;
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
+        }
+
         private bool Initial_WithServiceAccount(string accountmail, string jsonfile)
         {
             try

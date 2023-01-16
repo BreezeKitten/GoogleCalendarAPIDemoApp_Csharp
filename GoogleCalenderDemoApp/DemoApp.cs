@@ -39,6 +39,37 @@ namespace GoogleCalenderDemoApp
             client.Initial(Properties.Settings.Default.ServiceAccountEmail, Properties.Settings.Default.ServiceAccountCertPath);            
         }
 
+        private void UpdateEventIDList()
+        {
+            List<string> idList = client.GetList(Properties.Settings.Default.TargetCalendarID);
+            cb_EventID.Items.Clear();
+            foreach (string id in idList)
+            {
+                cb_EventID.Items.Add(id);
+            }
+            if (cb_EventID.Items.Count > 0)
+            {
+                cb_EventID.SelectedIndex = 0;
+            }
+            else
+            {
+                cb_EventID.Text = "";
+            }
+        }
+
+        private void UpdateReadEvent(string id)
+        {
+            SelfDefineEvent ReadResult;
+            if( client.GetEvent(Properties.Settings.Default.TargetCalendarID, id, out ReadResult) == true)
+            {
+                tb_ReadID.Text = id;
+                tb_EventSummary.Text = ReadResult.Summary;
+                rtb_EventDescription.Text = ReadResult.Description;
+                //dtp_EventStartTime.Value = ReadResult.Start;
+                //dtp_EventEndTime.Value = ReadResult.End;
+            }
+        }
+
         private void bt_InitalClient_Click(object sender, EventArgs e)
         {
             InitialService();
@@ -47,23 +78,27 @@ namespace GoogleCalenderDemoApp
 
         private void bt_ShowAllEvent_Click(object sender, EventArgs e)
         {
-            List<string> idList = client.GetList(Properties.Settings.Default.TargetCalendarID);
-            foreach(string id in idList)
-            {
-                Console.WriteLine(id);
-            }            
+            UpdateEventIDList();
         }
 
         private void bt_DelEvent_Click(object sender, EventArgs e)
         {
-            client.DelEvent(Properties.Settings.Default.TargetCalendarID,
-                tb_EventID.Text);
+            client.DelEvent(Properties.Settings.Default.TargetCalendarID, cb_EventID.Text);
+            UpdateEventIDList();
         }
 
         private void tsb_Setting_Click(object sender, EventArgs e)
         {
             Form Setting = new SettingForm();
             Setting.Show();
+        }
+
+        private void cb_EventID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if( cb_EventID.Text != "")
+            {
+                UpdateReadEvent(cb_EventID.Text);
+            }
         }
     }
 }
