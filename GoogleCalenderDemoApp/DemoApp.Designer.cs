@@ -37,12 +37,12 @@
             this.tsb_Setting = new System.Windows.Forms.ToolStripButton();
             this.cb_EventID = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tb_EventSummary = new System.Windows.Forms.TextBox();
-            this.rtb_EventDescription = new System.Windows.Forms.RichTextBox();
-            this.tb_ReadID = new System.Windows.Forms.TextBox();
-            this.dtp_EventStartTime = new System.Windows.Forms.DateTimePicker();
-            this.dtp_EventEndTime = new System.Windows.Forms.DateTimePicker();
             this.bt_AddEvent = new System.Windows.Forms.Button();
+            this.dtp_EventEndTime = new System.Windows.Forms.DateTimePicker();
+            this.dtp_EventStartTime = new System.Windows.Forms.DateTimePicker();
+            this.tb_ReadID = new System.Windows.Forms.TextBox();
+            this.rtb_EventDescription = new System.Windows.Forms.RichTextBox();
+            this.tb_EventSummary = new System.Windows.Forms.TextBox();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -92,7 +92,7 @@
             this.tsb_Setting});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(280, 25);
             this.toolStrip1.TabIndex = 5;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -131,47 +131,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "事件內容";
             // 
-            // tb_EventSummary
-            // 
-            this.tb_EventSummary.Location = new System.Drawing.Point(81, 54);
-            this.tb_EventSummary.Name = "tb_EventSummary";
-            this.tb_EventSummary.Size = new System.Drawing.Size(159, 22);
-            this.tb_EventSummary.TabIndex = 0;
-            // 
-            // rtb_EventDescription
-            // 
-            this.rtb_EventDescription.Location = new System.Drawing.Point(81, 82);
-            this.rtb_EventDescription.Name = "rtb_EventDescription";
-            this.rtb_EventDescription.Size = new System.Drawing.Size(159, 92);
-            this.rtb_EventDescription.TabIndex = 1;
-            this.rtb_EventDescription.Text = "";
-            // 
-            // tb_ReadID
-            // 
-            this.tb_ReadID.Location = new System.Drawing.Point(81, 26);
-            this.tb_ReadID.Name = "tb_ReadID";
-            this.tb_ReadID.ReadOnly = true;
-            this.tb_ReadID.Size = new System.Drawing.Size(159, 22);
-            this.tb_ReadID.TabIndex = 2;
-            // 
-            // dtp_EventStartTime
-            // 
-            this.dtp_EventStartTime.CustomFormat = "yyyy-MM-dd HH:mm:ss";
-            this.dtp_EventStartTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_EventStartTime.Location = new System.Drawing.Point(81, 180);
-            this.dtp_EventStartTime.Name = "dtp_EventStartTime";
-            this.dtp_EventStartTime.Size = new System.Drawing.Size(159, 22);
-            this.dtp_EventStartTime.TabIndex = 3;
-            // 
-            // dtp_EventEndTime
-            // 
-            this.dtp_EventEndTime.CustomFormat = "yyyy-MM-dd HH:mm:ss";
-            this.dtp_EventEndTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_EventEndTime.Location = new System.Drawing.Point(81, 208);
-            this.dtp_EventEndTime.Name = "dtp_EventEndTime";
-            this.dtp_EventEndTime.Size = new System.Drawing.Size(159, 22);
-            this.dtp_EventEndTime.TabIndex = 4;
-            // 
             // bt_AddEvent
             // 
             this.bt_AddEvent.Location = new System.Drawing.Point(165, 236);
@@ -182,11 +141,52 @@
             this.bt_AddEvent.UseVisualStyleBackColor = true;
             this.bt_AddEvent.Click += new System.EventHandler(this.bt_AddEvent_Click);
             // 
+            // dtp_EventEndTime
+            // 
+            this.dtp_EventEndTime.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            this.dtp_EventEndTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp_EventEndTime.Location = new System.Drawing.Point(81, 208);
+            this.dtp_EventEndTime.Name = "dtp_EventEndTime";
+            this.dtp_EventEndTime.Size = new System.Drawing.Size(159, 22);
+            this.dtp_EventEndTime.TabIndex = 4;
+            // 
+            // dtp_EventStartTime
+            // 
+            this.dtp_EventStartTime.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            this.dtp_EventStartTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp_EventStartTime.Location = new System.Drawing.Point(81, 180);
+            this.dtp_EventStartTime.Name = "dtp_EventStartTime";
+            this.dtp_EventStartTime.Size = new System.Drawing.Size(159, 22);
+            this.dtp_EventStartTime.TabIndex = 3;
+            // 
+            // tb_ReadID
+            // 
+            this.tb_ReadID.Location = new System.Drawing.Point(81, 26);
+            this.tb_ReadID.Name = "tb_ReadID";
+            this.tb_ReadID.ReadOnly = true;
+            this.tb_ReadID.Size = new System.Drawing.Size(159, 22);
+            this.tb_ReadID.TabIndex = 2;
+            // 
+            // rtb_EventDescription
+            // 
+            this.rtb_EventDescription.Location = new System.Drawing.Point(81, 82);
+            this.rtb_EventDescription.Name = "rtb_EventDescription";
+            this.rtb_EventDescription.Size = new System.Drawing.Size(159, 92);
+            this.rtb_EventDescription.TabIndex = 1;
+            this.rtb_EventDescription.Text = "";
+            // 
+            // tb_EventSummary
+            // 
+            this.tb_EventSummary.Location = new System.Drawing.Point(81, 54);
+            this.tb_EventSummary.Name = "tb_EventSummary";
+            this.tb_EventSummary.Size = new System.Drawing.Size(159, 22);
+            this.tb_EventSummary.TabIndex = 0;
+            // 
             // DemoApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(280, 450);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.cb_EventID);
             this.Controls.Add(this.toolStrip1);
