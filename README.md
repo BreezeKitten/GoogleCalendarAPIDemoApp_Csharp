@@ -59,3 +59,8 @@ Type the information
 ## TODO
 1. Update Event Function.
 2. OAuth 2.0 Client operation interface.
+
+## Reference
+1. NuGet ( https://www.nuget.org/packages/Google.Apis.Calendar.v3/ )
+2. Service Account sample code ( https://afterlogic.com/mailbee-net/docs/OAuth2GoogleServiceAccounts.html )
+3. Google guideline ( https://developers.google.com/api-client-library/dotnet/apis/calendar/v3 )
