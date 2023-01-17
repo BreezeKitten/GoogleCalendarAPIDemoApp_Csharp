@@ -28,6 +28,7 @@ For Detail, you can refer to https://ithelp.ithome.com.tw/articles/10279272
 # Use
 ## Setting ( click the upper left button )
 ![圖片](https://user-images.githubusercontent.com/48701080/212818164-dd7191be-202f-4100-b8fa-43bda16b40d3.png)
+
 Type the information 
 1. Service Account Email
 2. the path of Service Account Credential Json file.( Download from GCP )
